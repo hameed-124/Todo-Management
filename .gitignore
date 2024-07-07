@@ -1,0 +1,13 @@
+# Ignore virtual environment
+newenv/
+
+# Ignore compiled files
+*.pyc
+__pycache__/
+
+# Ignore database
+db.sqlite3
+
+# Ignore sensitive information
+*.env
+

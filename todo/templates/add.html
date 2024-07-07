@@ -1,0 +1,48 @@
+<!--
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Task</title>
+</head>
+<body>
+    <H1>Add Task</H1>
+    <form method="post">
+        {% csrf_token %}
+        <label for="title">Title:</label><br>
+        <input type="text" id="title" name="title" required><br><br>
+
+        <label for="descrition">Description:</label><br>
+        <textarea id="description" name="description"></textarea><br><br>  
+
+        <button type="submit">Add Task</button>
+    </form>
+</body>
+</html>
+-->
+
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add New Task</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+    <div class="container2">
+        <h1>Add New Task</h1>
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="id_title">Title:</label>
+                <input type="text" name="title" required id="id_title">
+            </div>
+            <div class="form-group">
+                <label for="id_description">Description:</label>
+                <textarea name="description" required id="id_description"></textarea>
+            </div>
+            <button type="submit" class="btn btn-success">Add Task</button>
+            <a href="{% url 'show' %}" class="btn btn-secondary">Cancel</a>
+        </form>
+    </div>
+</body>
+</html>

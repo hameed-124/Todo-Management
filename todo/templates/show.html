@@ -1,0 +1,76 @@
+<!--
+<!DOCTYPE html>
+<html>
+<head>
+    <title>To-Do List</title>
+</head>
+<body>
+    <h1>To-Do List</h1>
+    <ul>
+        {% for task in tasks %}
+            <li>
+                {{ task.title }} - {{ task.description }}
+                
+                <form action="{% url 'edit' task.id %}" method="get" style="display: inline;">
+                    <button type="submit">Update</button>
+                </form>
+                
+                <form action="{% url 'delete' task.id %}" method="post" style="display: inline;">
+                    {% csrf_token %}
+                    <button type="submit">Delete</button>
+                </form>
+            </li>
+        {% empty %}
+            <li>No tasks available.</li>
+        {% endfor %}
+    </ul>
+
+    <a href="{% url 'add' %}" style="text-decoration: none;">
+        <button>Add New Task</button>
+    </a>
+</body>
+</html>
+-->
+
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>To-Do List</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Todo MANAGEMENT</h1>
+      <div class="text-center mb-4">
+      <a href="{% url 'add' %}" class="btn btn-success">Create</a>
+    </div>
+      <table>
+        <thread>
+          <tr>
+            <th>#</th>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Action</th>
+          </tr>
+        </thread>
+
+        <tbody>
+          {% for task in tasks %}
+          <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ task.title }}</td>
+            <td>{{ task.description }}</td>
+            <td>
+              <a href="{% url 'edit' task.id %}" class="btn btn-info">Edit</a>
+              <a href="{% url 'delete' task.id %}" class="btn btn-danger"
+                >Delete</a
+              >
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>

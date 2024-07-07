@@ -1,0 +1,39 @@
+<!--
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Delete Task</title>
+</head>
+<body>
+    <h1>Delete Task</h1>
+    <p>Are you sure you want to delete "{{ task.title }}"?</p>
+
+    <form action="{% url 'delete' task.id %}" method="post">
+        {% csrf_token %}
+        <button type="submit">Confirm Delete</button>       
+    </form>
+    <a href="{% url 'show' %}">Cancel</a>
+    
+</body>
+</html>
+-->
+
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Delete Task</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+<body>
+    <div class="container2">
+        <h2>Delete Task</h2>
+        <p>Are you sure you want to delete "{{ task.title }}"?</p>
+
+        <form action="{% url 'delete' task.id %}" method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger">Confirm Delete</button>
+            <a href="{% url 'show' %}" class="btn btn-secondary">Cancel</a>
+        </form>
+    </div>
+</body>
+</html>
